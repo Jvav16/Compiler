@@ -1,0 +1,9 @@
+//jvav v1.16 first program 「Hello, World!」
+
+imp jvav.std.ios; // jvav i&o stream header
+
+func main(void) // main
+{
+	print("Hello, World!\n");
+	exit(0);
+}
