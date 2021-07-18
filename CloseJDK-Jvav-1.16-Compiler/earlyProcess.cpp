@@ -6,30 +6,33 @@
 
 using namespace std;
 
+// refers
+
+bool preProcess(char* , FILE* , char*);
+
 char* getPath(char*);
 
 char Path[10009] = { "\0" };
 
-bool earlyProcess(char* SourceFileName)
+FILE* earlyProcess(char* SourceFileName)
 {
 	char* targetFilePath = NULL;
 	char ObjFile[10009] = { "\0" };
-	targetFilePath = getPath(SourceFileName);
-	strcpy(ObjFile, SourceFileName);
-	ObjFile[strlen(ObjFile) - 4] = 'j';
-	ObjFile[strlen(ObjFile) - 3] = 'v';
-	ObjFile[strlen(ObjFile) - 2] = 'o';
-	ObjFile[strlen(ObjFile) - 1] = 'b';
-	ObjFile[strlen(ObjFile)] = 'j';
+
+	targetFilePath = getPath(SourceFileName); // get file path (without filename)
+	strcpy(ObjFile, SourceFileName); // set obj file path
+	ObjFile[strlen(ObjFile) - 4] = '\0';
+	strcat(ObjFile, "jvobj");
 	FILE* objFile = NULL;
-	objFile = fopen(ObjFile,"wb");
+	objFile = fopen(ObjFile,"wb"); // create obj file
 	if (!objFile)
 	{
-		cerr << "Failed create OBJ file!\n";
+		cerr << "Failed to create OBJ file!\n";
 		exit(2);
 	}
-	fwrite("Hello, World!", 1, strlen("Hello, World!") + 1, objFile);
-	return true;
+	preProcess(SourceFileName,objFile,targetFilePath);
+	objFile = fopen(ObjFile, "rb+");
+	return objFile;
 }
 
 char* getPath(char* targetFile)

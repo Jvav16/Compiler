@@ -34,7 +34,10 @@
 
 void welcome();
 char* getFileName(int, char*[]);
-bool earlyProcess(char*);
+FILE* earlyProcess(char*);
+char* compiler(FILE*, char*);
+FILE* objFile = NULL;
+char outputFile[10009] = { "\0" };
 
 // main
 
@@ -43,6 +46,24 @@ int main(int argc, char *argv[])
     char* targetFile = NULL; // file to compile
     welcome(); // show welcome
     targetFile = getFileName(argc, argv); // set filename
-    earlyProcess(targetFile);
+    objFile = earlyProcess(targetFile);
+    
+    if (!objFile)
+    {
+        cout << "Failed to pre-process targeted file \"";
+        puts(targetFile);
+        cout << "\"!\n";
+        puts("at jvav.preprocesser:\n\t2132:19 pre-process Failed.\n");
+        exit(3);
+    }
+    strcpy_s(outputFile,compiler(objFile, targetFile));
+    if (!objFile)
+    {
+        cout << "Failed to compile targeted file \"";
+        puts(targetFile);
+        cout << "\"!\n";
+        puts("at jvav.compiler:\n\t29738:19 Compile Failed.\n");
+        exit(4);
+    }
     return 0;
 }

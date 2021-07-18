@@ -27,6 +27,12 @@
     <ClCompile Include="earlyProcess.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="preCompiler.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="compiler.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CloseJDK-Jvav-1.16-Compiler.h">

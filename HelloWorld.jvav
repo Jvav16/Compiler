@@ -1,9 +1,12 @@
-//jvav v1.16 first program 「Hello, World!」
-
-imp jvav.std.ios; // jvav i&o stream header
+/**
+ *
+ *	jvav v1.16 first program 「Hello, World!」
+ *	by 2021(c) ExL Studios, 2021(c) Ojbkle
+ *
+**/
 
 func main(void) // main
 {
-	print("Hello, World!\n");
-	exit(0);
+	print("Hello, World!\n"); // output 'Hello, World!' and an 'Enter'
+	exit(0); // exit
 }
