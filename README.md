@@ -10,4 +10,4 @@ see when you are not sure what number is which command.
 <NUM> <TAB> : <TAB> <COMMAND>
 ```
 
-#Please Do Not Forget Notes When You Were Writting Codes!
+# Please Do Not Forget Notes When You Were Writting Codes!
